@@ -70,7 +70,7 @@ public class ChatServer
         } else
         {
             userList.put(user, ch);
-            Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Registered ClientHandler: {0}, with username: {1}", new Object[]{ch, user});
+            Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Registered new client with username: {0}", user);
             return true;
         }
     }
@@ -86,7 +86,7 @@ public class ChatServer
     {
         userList.remove(user, ch);
         clientList.remove(ch);
-        Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Removed client: {0} - username: {1}", new Object[]{ch, user});
+        Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Removed client: {0}", user);
     }
     
     // Send a list of users to all online ClientHandlers
