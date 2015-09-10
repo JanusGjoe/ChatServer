@@ -85,7 +85,7 @@ public class ClientHandler extends Thread
                 message = input.nextLine();
             } catch (NoSuchElementException no)
             {
-                Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, String.format("Run() - Error trying to read 2nd input.nextLine: ", no));
+                Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, String.format("ClientHandler, Run() - Error trying to read 2nd input.nextLine: ", no));
                 break;
             }
             Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, String.format("Received the message: %1$S ", message));

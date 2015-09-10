@@ -43,7 +43,7 @@ public class ChatServer
             do
             {
                 Socket socket = serverSocket.accept(); //Important Blocking call
-                Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Connected to a client");
+                Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Connected to a client. Waiting for username...");
                 ClientHandler ch = new ClientHandler(socket, this);
                 clientList.add(ch);
                 ch.start();
@@ -58,7 +58,7 @@ public class ChatServer
     public static void stopServer()
     {
         keepRunning = false;
-        Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Stopping server from client");
+        Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Stop server!");
     }
     
     // Map username to its ClientHandler, shortly after a new chat-client is connected and ClientHandler-Thread is started
@@ -70,17 +70,23 @@ public class ChatServer
         } else
         {
             userList.put(user, ch);
-            Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Registered connected client as: {0}", user);
+            Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Registered ClientHandler: {0}, with username: {1}", new Object[]{ch, user});
             return true;
         }
     }
+    
+//    // Fix username in case the username already exists in userlist of online 'chatters', whenever a new 'chatter' connects to server
+//    private void checkUsername(String user)
+//    {
+//        
+//    }
     
     // Remove user from userList
     public synchronized void removeClient(String user, ClientHandler ch)
     {
         userList.remove(user, ch);
         clientList.remove(ch);
-        Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Removing client");
+        Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Removed client: {0} - username: {1}", new Object[]{ch, user});
     }
     
     // Send a list of users to all online ClientHandlers
