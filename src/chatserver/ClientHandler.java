@@ -114,7 +114,7 @@ public class ClientHandler extends Thread
                     }
                     break;
                 case "STOP":
-//                    continueClient = false;
+                    continueClient = false;
                     break;
                 default:
                     continueClient = false;
