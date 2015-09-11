@@ -46,7 +46,7 @@ public class TestChatServer {
     @Test
     public void testMessage() throws IOException {
         
-        // START 1...
+        // START 1....
         Socket socket = new Socket("localhost", 9090);
         PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
         Scanner input = new Scanner(socket.getInputStream());
